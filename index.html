@@ -39,6 +39,14 @@
   <div id="editProductModal" class="modal hidden"><div class="modal-card"><button class="close" data-close="editProductModal">×</button><h2 id="editTitle">Producto</h2><div class="form-grid"><input id="editName" placeholder="Nombre"><select id="editCategory"><option value="">Selecciona una categoría</option><option value="T-Shirts">T-Shirts</option><option value="Hoodies">Hoodies</option><option value="Tumblers">Tumblers</option><option value="Gorras">Gorras</option><option value="Llaveros">Llaveros</option><option value="Accesorios">Accesorios</option><option value="Packs">Packs</option></select><input id="editPrice" type="number" step="0.01" placeholder="Precio"><input id="editImage" placeholder="Ruta de imagen o URL"><label class="file-upload"><span>📷 Subir imagen del artículo</span><input id="editImageFile" type="file" accept="image/*"></label><div id="editImagePreviewWrap" class="image-preview-wrap hidden"><img id="editImagePreview" alt="Vista previa"></div><input id="editVariants" placeholder="Tamaños/opciones separados por coma"><input id="editColors" placeholder="Colores separados por coma"><textarea id="editDescription" placeholder="Descripción"></textarea></div><button id="saveProductBtn" class="gold-btn full">Guardar producto</button></div></div>
 
   <script src="app.js"></script>
-  <script src="supabase-bridge.js"></script>
-</body>
-</html>
+ <script>
+(function esperarAplicacion(){
+  if (window.products && window.renderAdmin && window.renderProducts) {
+    const script = document.createElement("script");
+    script.src = "supabase-bridge.js";
+    document.body.appendChild(script);
+  } else {
+    setTimeout(esperarAplicacion, 100);
+  }
+})();
+</script>
