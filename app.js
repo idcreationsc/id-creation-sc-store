@@ -179,7 +179,7 @@ function updatePaymentInstructions(){
   let text="";
   if(method==="Zelle") text=`Envía el pago por Zelle a: ${ZELLE}. Tu pedido quedará como PAGO PENDIENTE hasta que ID Creation SC confirme la recepción.`;
   if(method==="Cash App") text=`Envía el pago por Cash App a: ${CASHAPP}. Tu pedido quedará como PAGO PENDIENTE hasta que ID Creation SC confirme la recepción.`;
-  if(method==="PayPal") text=`PayPal: ${PAYPAL_USERNAME}. Pulsa el botón de PayPal para abrir el enlace de pago. Verifica que el perfil mostrado sea el correcto antes de pagar. El pedido quedará como PAGO PENDIENTE hasta que ID Creation SC confirme la recepción.`;
+  if(method==="PayPal") text=`PayPal: ${PAYPAL_USERNAME}. Al pulsar "Preparar pedido en WhatsApp", se generará tu número de orden y luego se abrirá el enlace oficial de PayPal. Introduce el total exacto del pedido y usa tu número de orden IDC-... como ID de factura. El pedido quedará como PAGO PENDIENTE hasta que ID Creation SC confirme la recepción.`;
   $("#paymentInstructions").textContent=text;
 }
 function renderAdminOrders(){
