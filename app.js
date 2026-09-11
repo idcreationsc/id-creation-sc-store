@@ -6,9 +6,23 @@ fetch("https://raw.githubusercontent.com/idcreationsc/id-creation-sc-store/d6f7f
   })
   .then(code => {
     const exports = `
-      window.products = products;
-      window.seedProducts = seedProducts;
-      window.orders = orders;
+      Object.defineProperty(window, "products", {
+        configurable: true,
+        get: () => products,
+        set: value => { products = value; }
+      });
+
+      Object.defineProperty(window, "orders", {
+        configurable: true,
+        get: () => orders,
+        set: value => { orders = value; }
+      });
+
+      Object.defineProperty(window, "seedProducts", {
+        configurable: true,
+        get: () => seedProducts
+      });
+
       window.saveProducts = saveProducts;
       window.renderProducts = renderProducts;
       window.renderAdmin = renderAdmin;
