@@ -5,16 +5,17 @@ fetch("https://raw.githubusercontent.com/idcreationsc/id-creation-sc-store/d6f7f
     return r.text();
   })
   .then(code => {
-    (0, eval)(code);
+    const exports = `
+      window.products = products;
+      window.seedProducts = seedProducts;
+      window.orders = orders;
+      window.saveProducts = saveProducts;
+      window.renderProducts = renderProducts;
+      window.renderAdmin = renderAdmin;
+      window.renderAdminOrders = renderAdminOrders;
+      window.saveOrders = saveOrders;
+    `;
 
-    if (typeof products !== "undefined") window.products = products;
-    if (typeof seedProducts !== "undefined") window.seedProducts = seedProducts;
-    if (typeof orders !== "undefined") window.orders = orders;
-
-    if (typeof saveProducts === "function") window.saveProducts = saveProducts;
-    if (typeof renderProducts === "function") window.renderProducts = renderProducts;
-    if (typeof renderAdmin === "function") window.renderAdmin = renderAdmin;
-    if (typeof renderAdminOrders === "function") window.renderAdminOrders = renderAdminOrders;
-    if (typeof saveOrders === "function") window.saveOrders = saveOrders;
+    (0, eval)(code + exports);
   })
   .catch(err => console.error("ID Creation SC:", err));
