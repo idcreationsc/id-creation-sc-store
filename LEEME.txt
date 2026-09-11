@@ -1,0 +1,51 @@
+ID CREATION SC — CORRECCIÓN ADMIN + PRECIOS
+
+CAMBIOS:
+1. El botón "+ Agregar nuevo diseño" ahora sirve para TODAS las categorías:
+   - T-Shirts
+   - Hoodies
+   - Tumblers
+   - Gorras
+   - Llaveros
+   - Accesorios
+   - Packs
+
+2. Al agregar o editar un diseño puedes escoger la categoría desde un menú.
+
+3. Se corrigió la tarjeta de producto:
+   - La imagen queda arriba.
+   - Nombre, categoría y precio quedan abajo sobre fondo blanco.
+   - El precio ya no queda encima de la imagen.
+   - "Ver opciones" queda siempre al final de la tarjeta.
+
+4. Admin sigue permitiendo:
+   - Cambiar precio.
+   - Cambiar nombre.
+   - Cambiar categoría.
+   - Subir/cambiar imagen.
+   - Cambiar tallas/opciones.
+   - Cambiar colores.
+   - Agregar productos.
+   - Eliminar productos.
+
+CLAVE TEMPORAL LOCAL:
+ID-2026-DEMO
+
+Esta versión sigue siendo local. No subir todavía a GitHub/Render hasta aprobarla.
+
+
+CAMBIOS NUEVOS:
+- Se eliminó Facebook, TikTok, YouTube y el símbolo @ de la parte superior.
+- Ahora aparece IDCREATIONSC en letras más grandes junto al logo.
+- "Sobre Nosotros" tiene su propia sección.
+- Se añadió la reseña oficial de la compañía manteniendo los colores negro, dorado y azul.
+
+
+CAMBIO DE MARCA EN EL HEADER:
+- El logo circular queda a la izquierda.
+- IDCREATIONSC aparece directamente al lado del logo.
+- ID usa dorado metálico.
+- CREATION usa plateado/blanco con reflejos dorados.
+- SC usa azul eléctrico con detalle dorado.
+- Debajo aparece: CREAMOS IDEAS, DISEÑAMOS EXPERIENCIAS.
+- Ya no aparece IDCREATIONSC suelto en la barra superior.

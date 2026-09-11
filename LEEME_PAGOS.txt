@@ -1,0 +1,26 @@
+ID CREATION SC — MÉTODOS DE PAGO
+
+Zelle: 570-371-2174
+Cash App: $ibsengmercado
+PayPal username: @IbsenGM
+PayPal.Me usado en esta versión: https://paypal.me/IbsenGM
+
+FUNCIONAMIENTO:
+- Cada pedido genera un número IDC-...
+- Todo pago empieza como PENDIENTE.
+- Zelle muestra el número para enviar el pago.
+- Cash App muestra el $Cashtag.
+- PayPal abre PayPal.Me/IbsenGM con el total del pedido en USD.
+- WhatsApp recibe el resumen completo del pedido.
+- En Administrador puedes marcar Pago: Pendiente/Pagado.
+- Estados del pedido: Nuevo, En proceso, Listo para recoger, Enviado, Entregado, Cancelado.
+
+IMPORTANTE SOBRE PAYPAL:
+El usuario proporcionó @IbsenGM. PayPal indica oficialmente que un PayPal.Me se construye como paypal.me/Nombre.
+Antes de aceptar una venta real, abre el enlace y confirma que muestra TU perfil/cuenta correcta.
+Si @IbsenGM es solo tu username pero tu PayPal.Me real es diferente, sustituiremos el enlace por el PayPal.Me exacto.
+
+SEGURIDAD:
+No marques un pedido como Pagado por una captura. Confirma la transacción dentro de tu banco, Cash App o PayPal.
+
+Esta sigue siendo una versión LOCAL. Los pedidos están en localStorage del navegador. Para producción, el administrador y los pedidos deben migrarse a un backend/base de datos.

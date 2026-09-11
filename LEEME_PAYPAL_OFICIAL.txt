@@ -1,0 +1,22 @@
+ID CREATION SC — PAYPAL OFICIAL
+
+Se reemplazó el enlace provisional de PayPal por el enlace oficial creado en PayPal:
+
+https://www.paypal.com/ncp/payment/WDUJ3JMB4DJHC
+
+Métodos de pago activos:
+- Zelle: 570-371-2174
+- Cash App: $ibsengmercado
+- PayPal: enlace oficial de PayPal
+
+Flujo de PayPal:
+1. La tienda genera el número de pedido IDC-...
+2. La tienda calcula el total.
+3. El cliente selecciona PayPal.
+4. Se abre el enlace oficial de PayPal.
+5. El cliente introduce el total exacto del pedido.
+6. El cliente escribe su número IDC-... como ID de factura.
+7. ID Creation SC verifica el pago recibido directamente en PayPal.
+8. Solo entonces se cambia el estado del pedido a PAGADO.
+
+No se agregó ninguna opción independiente de tarjeta.

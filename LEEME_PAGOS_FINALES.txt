@@ -1,0 +1,19 @@
+ID CREATION SC — MÉTODOS DE PAGO FINALES
+
+La opción de tarjeta de débito/crédito fue eliminada.
+
+Métodos disponibles:
+1. Zelle — 570-371-2174
+2. Cash App — $ibsengmercado
+3. PayPal — @IbsenGM
+
+No hay campos para ingresar números de tarjeta, CVV ni fecha de vencimiento.
+
+Los pedidos continúan:
+- generando número de orden,
+- guardándose en el administrador local,
+- comenzando con estado PAGO PENDIENTE,
+- permitiendo cambiar el estado a PAGADO después de verificar el dinero,
+- enviando el resumen del pedido por WhatsApp.
+
+La configuración Sandbox de tarjeta de la versión posterior no forma parte de esta versión.
