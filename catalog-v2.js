@@ -607,27 +607,16 @@
      INICIAR
   ============================== */
 
-  function start() {
-    loadCollections();
+ function start() {
+  createCollectionsArea();
+  connectCatalogLinks();
+  loadCollections();
 
-    const observer = new MutationObserver(() => {
-      connectCatalogLinks();
-
-      if (currentCollection) {
-        filterProductsByCollection();
-      }
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
+  if (
+    window.location.hash === "#catalogo" ||
+    window.location.hash === "#catalog"
+  ) {
+    setTimeout(showCollections, 300);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", start);
-  } else {
-    start();
-  }
-
-})();
+  const observer = new MutationObserver(() => {
