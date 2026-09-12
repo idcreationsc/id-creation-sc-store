@@ -1,0 +1,257 @@
+/* =====================================================
+   ID CREATION SC — CATÁLOGO V2
+   Colecciones + plantillas + mockups por color
+===================================================== */
+
+.collections-view {
+  margin-top: 22px;
+}
+
+.collections-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.collections-title h2 {
+  margin: 5px 0 8px;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+
+.collections-title p {
+  color: #b7bdc7;
+  margin: 0;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.collection-card {
+  position: relative;
+  min-height: 300px;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(231,171,34,.48);
+  background: #070a0e;
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+.collection-card:hover {
+  transform: translateY(-5px);
+  border-color: #ffd86f;
+  box-shadow: 0 18px 45px rgba(0,0,0,.55);
+}
+
+.collection-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.collection-card-info {
+  padding: 16px;
+  background: linear-gradient(180deg,#0a0d12,#030405);
+}
+
+.collection-card-info h3 {
+  margin: 0 0 6px;
+  color: #ffd86f;
+  text-transform: uppercase;
+}
+
+.collection-card-info p {
+  margin: 0;
+  color: #b7bdc7;
+  font-size: 13px;
+}
+
+/* Botón para regresar a las colecciones */
+
+.collection-back {
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =====================================================
+   MOCKUP DEL PRODUCTO
+===================================================== */
+
+.idc-mockup-stage {
+  position: relative;
+  width: 100%;
+  min-height: 430px;
+  background:
+    radial-gradient(circle at center,
+    rgba(10,121,255,.10),
+    rgba(0,0,0,.03) 50%),
+    #f4f4f4;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.idc-shirt-layer {
+  display: block;
+  width: 100%;
+  height: 430px;
+  object-fit: contain;
+}
+
+.idc-design-layer {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  width: 34%;
+  max-height: 48%;
+  object-fit: contain;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+
+/* =====================================================
+   SELECTOR VISUAL DE COLORES
+===================================================== */
+
+.idc-color-section {
+  margin-top: 16px;
+}
+
+.idc-color-section strong {
+  display: block;
+  margin-bottom: 9px;
+}
+
+.idc-color-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.idc-color-option {
+  min-width: 74px;
+  min-height: 40px;
+  padding: 7px 11px;
+  border: 1px solid #39414d;
+  border-radius: 8px;
+  background: #0a0e14;
+  color: white;
+  cursor: pointer;
+}
+
+.idc-color-option:hover {
+  border-color: #e7ab22;
+}
+
+.idc-color-option.selected {
+  color: #111;
+  background: linear-gradient(180deg,#ffdc76,#dfa31e);
+  border-color: #ffe08b;
+  font-weight: 900;
+}
+
+/* =====================================================
+   ADMIN — COLECCIONES Y MOCKUPS
+===================================================== */
+
+.idc-admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 20px;
+}
+
+.idc-admin-tab {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #39414d;
+  background: #0a0e14;
+  color: #fff;
+  font-weight: 800;
+}
+
+.idc-admin-tab.active {
+  color: #111;
+  border-color: #ffe08b;
+  background: linear-gradient(180deg,#ffdc76,#dfa31e);
+}
+
+.idc-admin-form {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  margin-bottom: 18px;
+  border: 1px solid #2c333d;
+  border-radius: 12px;
+  background: rgba(5,7,10,.82);
+}
+
+.idc-admin-form label {
+  color: #d5dae1;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.idc-admin-collection-row {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #2c333d;
+  border-radius: 10px;
+}
+
+.idc-admin-collection-row img {
+  width: 70px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 7px;
+  background: #fff;
+}
+
+/* =====================================================
+   MÓVIL
+===================================================== */
+
+@media (max-width: 900px) {
+  .collections-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collection-card {
+    min-height: 260px;
+  }
+
+  .collection-card img {
+    height: 190px;
+  }
+
+  .idc-mockup-stage,
+  .idc-shirt-layer {
+    min-height: 340px;
+    height: 340px;
+  }
+
+  .idc-design-layer {
+    width: 36%;
+  }
+
+  .idc-admin-collection-row {
+    grid-template-columns: 55px 1fr;
+  }
+}
