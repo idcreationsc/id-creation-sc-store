@@ -20,7 +20,7 @@ async function idcRequest(path,options={},auth=false){
   if(!res.ok) throw new Error(data?.message||data?.msg||data?.error_description||`Error ${res.status}`);
   return data;
 }
-function idcMapProduct(row){return {id:String(row.id),name:row.name||"Producto",category:row.category||"Accesorios",price:Number(row.price||0),image:row.image_url||"assets/logo.png",description:row.description||"",variants:Array.isArray(row.sizes)?row.sizes:[],colors:Array.isArray(row.colors)?row.colors:[]};}
+function idcMapProduct(row){return {id:String(row.id),name:row.name||"Producto",category:row.category||"Accesorios",price:Number(row.price||0),image:row.image_url||"assets/logo.png",image_url:row.image_url||"",description:row.description||"",variants:Array.isArray(row.sizes)?row.sizes:[],sizes:Array.isArray(row.sizes)?row.sizes:[],colors:Array.isArray(row.colors)?row.colors:[],collection_id:row.collection_id||null,design_image_url:row.design_image_url||"",use_mockup:row.use_mockup===true,mockup_scale:Number(row.mockup_scale||1),mockup_offset_x:Number(row.mockup_offset_x||0),mockup_offset_y:Number(row.mockup_offset_y||0)};}
 function idcProductPayload(p){return {name:p.name,category:p.category,price:Number(p.price||0),image_url:p.image||"assets/logo.png",sizes:Array.isArray(p.variants)?p.variants:[],colors:Array.isArray(p.colors)?p.colors:[],description:p.description||"",active:true};}
 
 async function idcLoadPublicProducts(){
