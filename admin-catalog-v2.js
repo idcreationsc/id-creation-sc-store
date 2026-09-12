@@ -5,7 +5,7 @@
 
   const SB_URL = "https://vjcfhlxwkmwogbifnxlf.supabase.co";
   const SB_KEY = "sb_publishable_2_bbdS-0Zp6CJeJD1dCajQ_Sgptga9H";
-
+const STORAGE_BUCKET = "catalog-images";
   let collections = [];
 
   function token() {
@@ -130,8 +130,9 @@
     }
 
     createPanel();
+connectCoverUpload();
 
-    try {
+try {
       await loadCollections();
     } catch (error) {
       console.error(error);
@@ -182,9 +183,28 @@
                       rows="4"
                       placeholder="Describe esta colección"></textarea>
 
-            <label>URL de imagen de portada</label>
-            <input id="idcCollectionCover"
-                   placeholder="https://...">
+         <label>Imagen de portada</label>
+
+<input id="idcCollectionCover"
+       placeholder="La URL aparecerá automáticamente al subir la imagen">
+
+<label class="file-upload" style="margin-top:8px;">
+  <span>📁 Subir imagen de portada</span>
+  <input id="idcCollectionCoverFile"
+         type="file"
+         accept="image/png,image/jpeg,image/webp">
+</label>
+
+<div id="idcCollectionCoverPreviewWrap"
+     class="image-preview-wrap"
+     style="display:none;margin-top:10px;">
+  <img id="idcCollectionCoverPreview"
+       alt="Vista previa de portada"
+       style="max-height:220px;">
+</div>
+
+<div id="idcCoverUploadMessage"
+     class="inline-message"></div>
 
             <label>Orden</label>
             <input id="idcCollectionOrder"
@@ -246,7 +266,126 @@
     document.querySelector("#idcCancelCollectionEdit")
       ?.addEventListener("click", resetForm);
   }
+async function uploadCollectionCover(file) {
+  if (!file) return "";
 
+  if (!token()) {
+    throw new Error("Inicia sesión como administrador antes de subir imágenes.");
+  }
+
+  if (!file.type.startsWith("image/")) {
+    throw new Error("Selecciona un archivo de imagen.");
+  }
+
+  const extension =
+    file.name.split(".").pop()?.toLowerCase() || "png";
+
+  const safeName =
+    "cover-" +
+    Date.now() +
+    "-" +
+    Math.random().toString(36).slice(2, 8) +
+    "." +
+    extension;
+
+  const objectPath = "collection-covers/" + safeName;
+
+  const response = await fetch(
+    SB_URL +
+      "/storage/v1/object/" +
+      STORAGE_BUCKET +
+      "/" +
+      objectPath,
+    {
+      method: "POST",
+      headers: {
+        apikey: SB_KEY,
+        Authorization: "Bearer " + token(),
+        "Content-Type": file.type,
+        "x-upsert": "false"
+      },
+      body: file
+    }
+  );
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || "No se pudo subir la imagen.");
+  }
+
+  return (
+    SB_URL +
+    "/storage/v1/object/public/" +
+    STORAGE_BUCKET +
+    "/" +
+    objectPath
+  );
+}
+
+function connectCoverUpload() {
+  const input =
+    document.querySelector("#idcCollectionCoverFile");
+
+  if (!input || input.dataset.ready === "1") return;
+
+  input.dataset.ready = "1";
+
+  input.addEventListener("change", async () => {
+    const file = input.files?.[0];
+
+    if (!file) return;
+
+    const message =
+      document.querySelector("#idcCoverUploadMessage");
+
+    const preview =
+      document.querySelector("#idcCollectionCoverPreview");
+
+    const previewWrap =
+      document.querySelector("#idcCollectionCoverPreviewWrap");
+
+    const urlInput =
+      document.querySelector("#idcCollectionCover");
+
+    if (preview && previewWrap) {
+      preview.src = URL.createObjectURL(file);
+      previewWrap.style.display = "block";
+    }
+
+    if (message) {
+      message.textContent = "Subiendo imagen...";
+    }
+
+    input.disabled = true;
+
+    try {
+      const publicUrl =
+        await uploadCollectionCover(file);
+
+      if (urlInput) {
+        urlInput.value = publicUrl;
+      }
+
+      if (preview) {
+        preview.src = publicUrl;
+      }
+
+      if (message) {
+        message.textContent =
+          "✅ Imagen subida correctamente.";
+      }
+    } catch (error) {
+      console.error(error);
+
+      if (message) {
+        message.textContent =
+          "❌ " + error.message;
+      }
+    } finally {
+      input.disabled = false;
+    }
+  });
+}
   async function loadCollections() {
     collections = await request(
       "collections?select=*&order=sort_order.asc,name.asc",
